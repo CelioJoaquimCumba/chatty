@@ -1,13 +1,19 @@
 import { NavigationBar } from "@/components/atoms/NavigationBar"
-import { Button } from "@/components/ui/button"
+import { Chats } from "@/components/molecules/Chats"
+import { Profile } from "@/components/molecules/Profile"
 import { ModeToggle } from "@/components/ui/mode-toggle"
-import { NavigationMenu } from "@radix-ui/react-navigation-menu"
 
 export const Main = () => {
     return(
-        <div className="flex flex-col">
+        <div className="flex flex-col h-screen">
             <ModeToggle/>
             <NavigationBar/>
+            <div className="flex h-full">
+                <Chats className="hidden lg:flex w-1/4"/>
+                <div className="w-2/4">
+                </div>
+                <Profile className="hidden lg:flex w-1/4"/>
+            </div>
         </div>
     )
 }
