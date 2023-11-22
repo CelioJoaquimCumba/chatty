@@ -12,14 +12,14 @@ import { Chats } from "../molecules/Chats";
 
 export function NavigationBar() {
   return (
-    <div className=" lg:hidden">
-      <NavigationMenu className="flex w-full max-w-none py-6  border-b border-gray-100 " >
+    <div className=" lg:hidden h-full">
+      <NavigationMenu className="flex w-full max-w-none py-2  border-b border-gray-100 " >
         <NavigationMenuList className="flex justify-between items-center px-4">
           <NavigationMenuItem>
                     <Sheet>
                       <SheetTrigger>
                         <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                          <MessagesSquare size={32}/>
+                          <MessagesSquare size={24}/>
                         </NavigationMenuLink>
                       </SheetTrigger>
                       <SheetContent side={"left"} className="w-full">
@@ -32,7 +32,7 @@ export function NavigationBar() {
                 <Sheet>
                   <SheetTrigger>
                     <NavigationMenuLink className={navigationMenuTriggerStyle()}>
-                      <User size={32}/>
+                      <User size={24}/>
                     </NavigationMenuLink>
                   </SheetTrigger>
                   <SheetContent className="w-full">
