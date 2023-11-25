@@ -7,7 +7,7 @@ type ChatBubbleProps = {
 
 export const ChatBubble = ({isOwner, message, sender, timestamp}: ChatBubbleProps) => {
     return(
-        <div className={`w-full self-stretch px-4 py-0.5 bg-background rounded-lg justify-start items-center gap-2 flex text-justify ${isOwner ? "flex-row-reverse text-end" : "flex-row text-start"}`}>
+        <div className={`w-full self-stretch px-4 py-0.5 bg-background rounded-lg justify-start items-center gap-2 flex text-justify ${isOwner ? "flex-row-reverse text-end" : "flex-row text-start"} break-all`}>
             <img className="w-10 h-10 rounded-lg border border-gray-300" src="https://via.placeholder.com/40x40" />
             <div className={`self-stretch w-4/6  py-4 flex-col gap-2 flex overflow-hidden ${isOwner ? "items-end" : "items-start"}`}>
                 <div className="justify-end items-end gap-1 flex ">
