@@ -6,12 +6,12 @@ import { ModeToggle } from "@/components/ui/mode-toggle"
 
 export const Main = () => {
     return(
-        <div className="flex flex-col h-screen px-9 bg-green-500">
+        <div className="flex flex-col h-[calc(100dvh)] inset-0">
             <ModeToggle/>
             <NavigationBar/>
-            <div className="flex h-full ">
-                <Chats className="hidden lg:flex w-1/4"/>
-                <Chat className="w-full lg:w-3/4"/>
+            <div className="flex h-full overflow-hidden">
+                <Chats className="hidden w-full lg:flex lg:w-1/4"/>
+                <Chat className="lg:w-2/4"/>
                 <Profile className="hidden lg:flex w-1/4"/>
             </div>
         </div>

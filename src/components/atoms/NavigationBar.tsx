@@ -12,7 +12,7 @@ import { Chats } from "../molecules/Chats";
 
 export function NavigationBar() {
   return (
-    <div className=" lg:hidden h-full">
+    <div className="lg:hidden flex">
       <NavigationMenu className="flex w-full max-w-none py-2  border-b border-gray-100 " >
         <NavigationMenuList className="flex justify-between items-center px-4">
           <NavigationMenuItem>

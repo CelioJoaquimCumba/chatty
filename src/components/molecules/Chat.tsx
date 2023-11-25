@@ -1,29 +1,54 @@
 import { cn } from "@/lib/utils"
-import React from "react"
+import React, { useState } from "react"
 import { ChatBubble } from "../atoms/ChatBubble"
 import { Input } from "../ui/input"
+import { Button } from "../ui/button"
 
 type HTMLDivElement = React.HTMLAttributes<HTMLDivElement>
 export const Chat = ({className}: HTMLDivElement) => {
+    const [messages, setMessages] = useState<string[]>([])
+    const [input, setInput] = useState("")
+    const handleChange = (e:React.FormEvent<HTMLInputElement>) => {
+        setInput(e.currentTarget.value)
+    }
+    const handleMessage = (e: React.FormEvent<HTMLFormElement>) => {
+        e.preventDefault()
+        setMessages([...messages, input])
+        setInput("")
+    }
     return(
-        <div className={cn("w-full pb-4 bg-blue-500 flex-col justify-start items-start gap-2 flex ",className)}>
-            {/* <div className="self-stretch px-4 pt-2 flex-col justify-start items-start flex">
-                <div className="text-primary text-xl font-semibold font-['Inter'] leading-7">Chat</div>
+        <div className={cn("self-stretch w-full h-full pb-4  flex-col justify-start items-start gap-2 flex p-4 overflow-hidden",className)}>
+            <span className="self-stretch px-4 pt-2 flex-col justify-start items-start flex text-primary text-xl font-semibold leading-7">Chat</span>
+            <div className="self-stretch h-full flex flex-col flex-grow  justify-end items-start gap-2 overflow-hidden ">
+                <div className="self-stretch w-full h-full px-4 flex flex-col justify-start items-start  gap-2 overflow-y-auto overflow-x-hidden">
+                        {messages.map((message, index) => <ChatBubble isOwner={index % 2 === 0} message={message} sender={"Bubble junior"} timestamp={formatTimestamp(new Date().getTime().toString())}/>)}
+                </div>
+                <form onSubmit={handleMessage} className="self-stretch px-4 py-2 bg-background justify-start items-center gap-4 flex h-20">
+                    <Input autoFocus className="h-full" value={input} onChange={handleChange} placeholder="Type a message"/>
+                    <Button className="h-full" variant={"outline"} type="submit" >button</Button>
+                </form>
             </div>
-            <div className="self-stretch flex-col  justify-start items-start gap-2 flex overflow-auto ">
-                <div className="self-stretch px-4 flex-col justify-start items-start flex h-full  ">
-                    <div className="flex flex-col w-full">
-                        {[1,2,3,4,5,6,7,8,9,0].map((number) => <ChatBubble isOwner={number%2 === 0}/>)}
-                    </div>
-                </div>
-                <div className="self-stretch px-4 py-2 bg-background justify-start items-center gap-4 inline-flex">
-                        <div className="grow shrink   bg-gray-200 rounded-lg" />
-                            <Input/>
-                        <div className="self-stretch px-2 py-1 bg-background rounded border border-gray-500 flex-col justify-center items-center gap-2 inline-flex">
-                            <div className="text-black text-base font-light font-['Inter'] leading-normal">button</div>
-                        </div>
-                </div>
-            </div> */}
         </div>
     )
+}
+
+function formatTimestamp(timestamp: string) {
+  const now: any = new Date();
+  const messageTime: any = new Date(timestamp);
+  const timeDifference: number = now - messageTime;
+
+  const seconds = Math.floor(timeDifference / 1000);
+  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+  const days = Math.floor(hours / 24);
+
+  if (days > 0) {
+    return days === 1 ? 'yesterday' : `${days} days ago`;
+  } else if (hours > 0) {
+    return hours === 1 ? 'an hour ago' : `${hours} hours ago`;
+  } else if (minutes > 0) {
+    return minutes === 1 ? 'a minute ago' : `${minutes} minutes ago`;
+  } else {
+    return 'just now';
+  }
 }
