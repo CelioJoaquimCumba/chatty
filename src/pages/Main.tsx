@@ -6,6 +6,7 @@ import { ModeToggle } from "@/components/ui/mode-toggle"
 import { useAuth } from "@/firebase/auth"
 import { auth } from "@/firebase/firebase"
 import { chats } from "@/static data/chats"
+import { Dialog } from "@radix-ui/react-dialog"
 import { GoogleAuthProvider } from "firebase/auth"
 import StyledFirebaseAuth from "react-firebaseui/StyledFirebaseAuth";
 const uiConfig = {
@@ -22,9 +23,9 @@ export const Main = () => {
         <div className="flex flex-col h-[calc(100dvh)] inset-0">
             <ModeToggle/>
             <NavigationBar/>
-            <dialog className="flex bg-black border-white border-[1px] " open={!authUser}>
+            <Dialog open={!authUser}>
                 <StyledFirebaseAuth uiConfig={uiConfig} firebaseAuth={auth}></StyledFirebaseAuth>
-            </dialog>
+            </Dialog>
             <div className="flex h-full overflow-hidden pt-4">
                 <Chats chats={chats} className="hidden w-full lg:flex lg:w-1/4"/>
                 <Chat className="lg:w-2/4"/>
