@@ -3,6 +3,7 @@ import React, { useState } from "react"
 import { ChatBubble } from "../atoms/ChatBubble"
 import { Input } from "../ui/input"
 import { Button } from "../ui/button"
+import {  SendHorizonal } from "lucide-react"
 
 type HTMLDivElement = React.HTMLAttributes<HTMLDivElement>
 export const Chat = ({className}: HTMLDivElement) => {
@@ -17,7 +18,7 @@ export const Chat = ({className}: HTMLDivElement) => {
         setInput("")
     }
     return(
-        <div className={cn("self-stretch w-full h-full pb-4  flex-col justify-start items-start gap-2 flex p-4 overflow-hidden",className)}>
+        <div className={cn("self-stretch w-full h-full pb-4  flex-col justify-start items-start gap-2 flex px-4 overflow-hidden",className)}>
             <span className="self-stretch px-4 pt-2 flex-col justify-start items-start flex text-primary text-xl font-semibold leading-7">Chat</span>
             <div className="self-stretch h-full flex flex-col flex-grow  justify-end items-start gap-2 overflow-hidden ">
                 <div className="self-stretch w-full h-full px-4 flex flex-col justify-start items-start  gap-2 overflow-y-auto overflow-x-hidden">
@@ -25,7 +26,7 @@ export const Chat = ({className}: HTMLDivElement) => {
                 </div>
                 <form onSubmit={handleMessage} className="self-stretch px-4 py-2 bg-background justify-start items-center gap-4 flex h-20">
                     <Input autoFocus className="h-full" value={input} onChange={handleChange} placeholder="Type a message"/>
-                    <Button className="h-full" variant={"outline"} type="submit" >button</Button>
+                    <Button className="flex flex-row h-full" variant={"outline"} type="submit" ><SendHorizonal/></Button>
                 </form>
             </div>
         </div>
