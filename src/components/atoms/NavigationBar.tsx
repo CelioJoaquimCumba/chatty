@@ -9,6 +9,7 @@ import { MessagesSquare, User } from "lucide-react";
 import { Sheet, SheetContent,SheetTrigger } from "../ui/sheet";
 import { Profile } from "../molecules/Profile";
 import { Chats } from "../molecules/Chats";
+import { chats } from "@/static data/chats";
 
 export function NavigationBar() {
   return (
@@ -23,7 +24,7 @@ export function NavigationBar() {
                         </NavigationMenuLink>
                       </SheetTrigger>
                       <SheetContent side={"left"} className="w-full">
-                        <Chats/>
+                        <Chats chats={chats}/>
                       </SheetContent>
                     </Sheet>
           </NavigationMenuItem>
